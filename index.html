@@ -242,7 +242,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           Sync("#model-viewer", "#sound");
         });
       </script>   
-  
+<!-- using Three.js script 246-259 to apply a video texture to a model inside <model-viewer> --> 
+   <script>
+    const viewer = document.getElementById("viewer");
+    const video = document.getElementById("videoTexture");
+
+    viewer.addEventListener("load", () => {
+      const texture = new THREE.VideoTexture(video);
+      texture.minFilter = THREE.LinearFilter;
+      texture.magFilter = THREE.LinearFilter;
+      texture.format = THREE.RGBAFormat;
+
+      // Apply the texture to the first material in the model
+      viewer.model.materials[0].pbrMetallicRoughness.baseColorTexture.setTexture(texture);
+    });
+  </script>
+
    <div class="centerImage">   
    <button onclick="location.href='https://avertek.github.io/The-Charles/'" type="button" slot="" 
                     style="z-index: 9; background-color: #b5aa33; border-radius: 8px; border: 1 px solid white; position: static; height: 35px; width: auto;
