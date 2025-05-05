@@ -25,7 +25,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   gtag('config', 'G-0000000000');
 </script>
  
- </head>
  <!-- Loads <model-viewer> for modern browsers: -->
  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
   
@@ -41,7 +40,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <!-- OPTIONAL: Resize Observer polyfill improves resize behavior in non-Chrome browsers -->
   <script src="https://unpkg.com/resize-observer-polyfill/dist/ResizeObserver.js"></script>
 
-<script>
+ <!-- OPTIONAL: Supports Video Textures into a model inside <model-viewer> -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+ <style>
+    model-viewer {
+      width: 100%;
+      height: 500px;
+    }
+    video {
+      display: none; /* Hide the video element */
+    }
+ </style>
+ </head>
+ 
+ script>
       function Sync(selector, audioSelector) {
         var modelViewer = document.querySelector(selector);
         var sound = document.querySelector(audioSelector);
@@ -165,7 +178,10 @@ a {
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-00000000"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
- 
+
+<!-- Hidden Video Element -->
+  <video id="videoTexture" src="video.mp4" loop autoplay muted playsinline></video>
+
 <div class="container">
     <div class="card">
       <img class="marginauto" src="images/XR-EDGE.png" alt="Logo" style="max-width: 375px"> 
